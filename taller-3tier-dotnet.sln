@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EspaciosGrpcDatos", "Espaci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EspaciosLogicAPI", "EspaciosLogicAPI\EspaciosLogicAPI.csproj", "{43614BED-8DE9-4DFD-9A94-B4BE8C2492E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EspaciosBlazorApp", "EspaciosBlazorApp\EspaciosBlazorApp.csproj", "{521549B9-7A35-4C00-B2CE-8FF4863CF293}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{43614BED-8DE9-4DFD-9A94-B4BE8C2492E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43614BED-8DE9-4DFD-9A94-B4BE8C2492E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43614BED-8DE9-4DFD-9A94-B4BE8C2492E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{521549B9-7A35-4C00-B2CE-8FF4863CF293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{521549B9-7A35-4C00-B2CE-8FF4863CF293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{521549B9-7A35-4C00-B2CE-8FF4863CF293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{521549B9-7A35-4C00-B2CE-8FF4863CF293}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
