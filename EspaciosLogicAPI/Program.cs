@@ -3,7 +3,7 @@ using EspaciosLogicAPI.GrpcClients;
 var builder = WebApplication.CreateBuilder(args);
 
 // gRPC Client
-var grpcServerUrl = "https://localhost:5258";
+var grpcServerUrl = "http://localhost:5258";
 builder.Services.AddSingleton(sp => new EspaciosGrpcClient(grpcServerUrl));
 
 // Controllers
@@ -22,6 +22,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseAuthorization();
+// app.UseAuthorization();
 app.MapControllers();
 app.Run();
