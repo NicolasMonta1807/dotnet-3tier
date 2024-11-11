@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "EspaciosGrpcDatos";
+
+message HorarioMessage {
+  int32 id = 1;
+  string hora_inicio = 2;
+  string hora_fin = 3;
+  int32 capacidad = 4;
+}
+
+message EspacioMessage {
+  int32 id = 1;
+  string nombre = 2;
+  string hora_apertura = 3;
+  string hora_cierre = 4;
+  repeated HorarioMessage horarios = 5;
+}
+
+message GetAllEspaciosRequest {}
+
+message GetAllEspaciosResponse {
+  repeated EspacioMessage espacios = 1;
+}
+
+service Espacios {
+  rpc GetAllEspacios (GetAllEspaciosRequest) returns (GetAllEspaciosResponse);
+}
