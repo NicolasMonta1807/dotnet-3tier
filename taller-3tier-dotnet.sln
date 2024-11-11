@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EspaciosGrpcDatos", "EspaciosGrpcDatos\EspaciosGrpcDatos.csproj", "{28052C6D-C70B-4E81-8B37-C48AE40FF511}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EspaciosLogicAPI", "EspaciosLogicAPI\EspaciosLogicAPI.csproj", "{43614BED-8DE9-4DFD-9A94-B4BE8C2492E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{28052C6D-C70B-4E81-8B37-C48AE40FF511}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28052C6D-C70B-4E81-8B37-C48AE40FF511}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28052C6D-C70B-4E81-8B37-C48AE40FF511}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43614BED-8DE9-4DFD-9A94-B4BE8C2492E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43614BED-8DE9-4DFD-9A94-B4BE8C2492E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43614BED-8DE9-4DFD-9A94-B4BE8C2492E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43614BED-8DE9-4DFD-9A94-B4BE8C2492E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
