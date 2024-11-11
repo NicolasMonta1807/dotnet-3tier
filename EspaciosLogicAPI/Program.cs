@@ -1,12 +1,20 @@
+using EspaciosLogicAPI.GrpcClients;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Services
+// gRPC Client
+var grpcServerUrl = "https://localhost:5258";
+builder.Services.AddSingleton(sp => new EspaciosGrpcClient(grpcServerUrl));
+
+// Controllers
+builder.Services.AddControllers();
+
+// Swagger Configuration
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Swagger Configuration
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -14,4 +22,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
 app.Run();

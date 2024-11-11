@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+option csharp_namespace = "EspaciosLogicAPI";
+
+// Entities
+
+message HorarioMessage {
+  int32 id = 1;
+  string hora_inicio = 2;
+  string hora_fin = 3;
+  int32 capacidad = 4;
+}
+
+message EspacioMessage {
+  int32 id = 1;
+  string nombre = 2;
+  string hora_apertura = 3;
+  string hora_cierre = 4;
+  repeated HorarioMessage horarios = 5;
+}
+
+// Get All
+
+message GetAllEspaciosRequest {}
+
+message GetAllEspaciosResponse {
+  repeated EspacioMessage espacios = 1;
+}
+
+// Get By Id
+
+message GetEspacioByIdRequest {
+  int32 id = 1;
+}
+
+message GetEspacioByIdResponse {
+  EspacioMessage espacio = 1;
+}
+
+// Create
+
+message CreateEspacioRequest {
+  string nombre = 1;
+  string hora_apertura = 2;
+  string hora_cierre = 3;
+  repeated HorarioMessage horarios = 4;
+}
+
+message CreateEspacioResponse {
+  EspacioMessage espacio = 1;
+}
+
+// Update
+
+message UpdateEspacioRequest {
+  int32 id = 1;
+  string nombre = 2;
+  string hora_apertura = 3;
+  string hora_cierre = 4;
+  repeated HorarioMessage horarios = 5;
+}
+
+message UpdateEspacioResponse {
+  EspacioMessage espacio = 1;
+}
+
+// Delete
+
+message DeleteEspacioRequest {
+  int32 id = 1;
+}
+
+message DeleteEspacioResponse {
+  bool success = 1;
+}
+
+// Services
+
+service Espacios {
+  rpc GetAllEspacios (GetAllEspaciosRequest) returns (GetAllEspaciosResponse);
+
+  rpc GetEspacioById (GetEspacioByIdRequest) returns (GetEspacioByIdResponse);
+
+  rpc CreateEspacio (CreateEspacioRequest) returns (CreateEspacioResponse);
+
+  rpc UpdateEspacio (UpdateEspacioRequest) returns (UpdateEspacioResponse);
+
+  rpc DeleteEspacio (DeleteEspacioRequest) returns (DeleteEspacioResponse);
+}
