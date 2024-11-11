@@ -5,9 +5,13 @@ namespace EspaciosGrpcDatos.Model;
 [Table("horarios")]
 public class Horario
 {
-    public int Id { get; set; }
-    public int EspacioId { get; set; }
-    public TimeSpan HoraInicio { get; set; }
-    public TimeSpan HoraFin { get; set; }
-    public int Capacidad { get; set; }
+    [Column("id")] public int Id { get; set; }
+
+    [Column("espacio_id")] public int EspacioId { get; set; }
+
+    [Column("hora_inicio")] public TimeSpan HoraInicio { get; set; }
+    [Column("hora_fin")] public TimeSpan HoraFin { get; set; }
+    [Column("capacidad")] public int Capacidad { get; set; }
+
+    [ForeignKey("EspacioId")] public Espacio Espacio { get; set; }
 }
