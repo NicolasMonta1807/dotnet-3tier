@@ -1,0 +1,87 @@
+@page "/reservar/{espacioId:int}"
+@rendermode InteractiveServer
+@inject HttpClient HttpClient
+@using EspaciosBlazorApp.Model
+@using Microsoft.AspNetCore.Components.Web
+
+@inject NavigationManager NavigationManager
+
+<h3>Reserva de Espacio</h3>
+
+@if (espacio == null)
+{
+    <p>Cargando detalles del espacio...</p>
+}
+else
+{
+    <div class="espacio-detalles">
+        <h4>@espacio.Nombre</h4>
+        <p>Horario: @espacio.HoraApertura - @espacio.HoraCierre</p>
+        <h5>Horarios Disponibles:</h5>
+        <ul>
+            @foreach (var horario in espacio.Horarios)
+            {
+                <li>
+                    <p>Inicio: @horario.HoraInicio, Fin: @horario.HoraFin, Capacidad: @horario.Capacidad</p>
+                    <input type="number" min="1" max="@horario.Capacidad" @bind="@(cantidadCupos[horario.Id])" />
+                    <button class="reservar-btn" @onclick="() => ReservarHorario(horario)" disabled="@carrito.Contains(horario)">Agregar al Carrito</button>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <h5>Carrito de Compras</h5>
+    @if (carrito.Count == 0)
+    {
+        <p>No hay horarios en el carrito.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var item in carrito)
+            {
+                <li>
+                    Espacio: @espacio.Nombre, Inicio: @item.HoraInicio, Fin: @item.HoraFin, Cupos: @cantidadCupos[item.Id]
+                    <button class="remove-btn" @onclick="() => RemoverDelCarrito(item)">Remover</button>
+                </li>
+            }
+        </ul>
+        <button class="remove-btn">Proceder al pago</button>
+    }
+}
+
+@code {
+    [Parameter] public int espacioId { get; set; }
+    private Espacio? espacio;
+    private List<Horario> carrito = new List<Horario>();
+    private Dictionary<int, int> cantidadCupos = new Dictionary<int, int>();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        espacio = await HttpClient.GetFromJsonAsync<Espacio>($"api/Espacios/{espacioId}");
+
+        // Inicializa la cantidad de cupos para cada horario
+        if (espacio != null)
+        {
+            foreach (var horario in espacio.Horarios)
+            {
+                cantidadCupos[horario.Id] = 1; // Por defecto, 1 cupo
+            }
+        }
+    }
+
+    private void ReservarHorario(Horario horario)
+    {
+        if (!carrito.Contains(horario))
+        {
+            carrito.Add(horario);
+            Console.WriteLine($"Horario {horario.Id} agregado al carrito con {cantidadCupos[horario.Id]} cupos.");
+        }
+    }
+
+    private void RemoverDelCarrito(Horario horario)
+    {
+        carrito.Remove(horario);
+        Console.WriteLine($"Horario {horario.Id} removido del carrito.");
+    }
+}

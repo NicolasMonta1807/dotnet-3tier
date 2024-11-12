@@ -1,0 +1,50 @@
+@page "/espacios"
+@inject EspaciosBlazorApp.Services.EspaciosService EspaciosService
+@using EspaciosBlazorApp.Model
+@using Microsoft.AspNetCore.Components
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+
+<h3 class="page-title">Espacios Disponibles</h3>
+
+@if (espacios == null)
+{
+    <div class="loading">Cargando espacios...</div>
+}
+else
+{
+    <div class="espacios-container">
+    @foreach (var espacio in espacios)
+        {
+            <div class="espacio-card">
+                <h4 class="espacio-title">@espacio.Nombre</h4>
+                <p class="horario-info">Horario: @espacio.HoraApertura - @espacio.HoraCierre</p>
+                <div class="horarios-list">
+                    @foreach (var horario in espacio.Horarios)
+                    {
+                        <div class="horario-item">
+                            <p>Inicio: @horario.HoraInicio, Fin: @horario.HoraFin, Capacidad: @horario.Capacidad</p>
+                            <NavLink class="nav-link" href="@($"/reservar/{espacio.Id}")">
+                                <button class="reservar-btn" >Reservar</button>
+                            </NavLink>
+                        </div>
+
+
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private List<Espacio>? espacios;
+
+    protected override async Task OnInitializedAsync()
+    {
+        espacios = await EspaciosService.GetEspaciosAsync();
+    }
+
+
+}
