@@ -1,7 +1,37 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Inicio</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="home-container">
+    <div class="welcome-section">
+        <h1>¡Bienvenido a Nuestra App!</h1>
+        <p>Explora las funcionalidades y descubre todo lo que tenemos para ofrecerte.</p>
+        <button class="explore-btn" @onclick="IrAExplorar">Explorar</button>
+    </div>
 
-Welcome to your new app.
+    <div class="features-section">
+        <h2>Nuestras Características</h2>
+        <div class="features-list">
+            <div class="feature-card">
+                <h3>Rápido y Eficiente</h3>
+                <p>Optimizado para ofrecerte la mejor experiencia en cualquier dispositivo.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Fácil de Usar</h3>
+                <p>Una interfaz intuitiva para que cualquier usuario pueda navegar sin problemas.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Seguro</h3>
+                <p>Tus datos están protegidos con nuestra infraestructura de alta seguridad.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private void IrAExplorar()
+    {
+        // Aquí puedes agregar la lógica para navegar a otra página
+        Console.WriteLine("Botón de explorar clickeado");
+    }
+}
